@@ -1,3 +1,7 @@
 # Exclude only the root-level public html archive and temp zip
 public_html.zip
 ziBHBsw2
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
