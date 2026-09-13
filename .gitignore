@@ -1,1 +1,3 @@
-# intentionally empty — all files are tracked
+# Exclude only the root-level public html archive and temp zip
+public_html.zip
+ziBHBsw2
