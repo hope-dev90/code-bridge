@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=round-1">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png?v=round-1">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=round-1">
+<link rel="icon" href="/favicon.ico?v=round-1" sizes="any">
+
+<title>Contact us | Codebridge</title>
+
+<link rel="stylesheet" href="style.css?v=nav-logo-1">
+<link rel="stylesheet" href="cb-final.css?v=nav-logo-1">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Google reCAPTCHA v2 API -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Leaflet CSS -->
+<link 
+  rel="stylesheet" 
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<style>
+  .map-embed {
+    width: 100%;
+    min-height: 300px;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  /* Center the reCAPTCHA checkbox nicely within the form layout */
+  .recaptcha-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+
+</head>
+
+<body>
+
+<!-- BEGIN: partial Header (nav) -->
+<nav class="site-nav" aria-label="Main navigation">
+
+    <div class="site-nav-pill">
+
+      <a href="index.html" class="site-nav-logo" aria-label="Codebridge home">
+        <img src="images/logo.png" alt="Codebridge logo">
+      </a>
+
+      <div class="site-nav-links">
+
+        <a href="index.html" data-i18n="nav.home">Home</a>
+
+        <div class="nav-item">
+          <div class="nav-item-row">
+            <a href="about.html" class="nav-item-link" data-i18n="nav.about">About us</a>
+
+            <button class="nav-item-caret"
+                    aria-label="Toggle About us submenu"
+                    aria-expanded="false">
+              <svg width="12" height="12"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2.4"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="nav-dropdown">
+            <a href="about.html#mission-vision">Mission &amp; vision</a>
+            <a href="about.html#journey">Our journey</a>
+            <a href="about.html#team">Our team</a>
+          </div>
+        </div>
+
+
+        <div class="nav-item">
+          <div class="nav-item-row">
+
+            <a href="services.html"
+               class="nav-item-link"
+               data-i18n="nav.services">
+              Services
+            </a>
+
+            <button class="nav-item-caret"
+                    aria-label="Toggle Services submenu"
+                    aria-expanded="false">
+
+              <svg width="12" height="12"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2.4"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+
+            </button>
+
+          </div>
+
+          <div class="nav-dropdown">
+            <a href="services.html#it-services">IT services</a>
+            <a href="services.html#online-integration">
+              Online services integration
+            </a>
+            <a href="services.html#safety-services">
+              Safety services
+            </a>
+            <a href="services.html#ikiraro-hub">
+              IKiraro innovation hub
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="nav-item">
+
+          <div class="nav-item-row">
+
+            <a href="careers.html"
+               class="nav-item-link"
+               data-i18n="nav.careers">
+              Careers
+            </a>
+
+            <button class="nav-item-caret"
+                    aria-label="Toggle Careers submenu"
+                    aria-expanded="false">
+
+              <svg width="12" height="12"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2.4"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+
+            </button>
+
+          </div>
+
+          <div class="nav-dropdown">
+            <a href="careers.html#job-opportunities">
+              Job opportunities
+            </a>
+
+            <a href="careers.html#internships">
+              Internship programs
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="nav-item">
+
+          <div class="nav-item-row">
+
+            <a href="innovations.html"
+               class="nav-item-link"
+               data-i18n="nav.innovations">
+              Innovations
+            </a>
+
+            <button class="nav-item-caret"
+                    aria-label="Toggle Innovations submenu"
+                    aria-expanded="false">
+
+              <svg width="12" height="12"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2.4"
+                   stroke-linecap="round"
+                   stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+
+            </button>
+
+          </div>
+
+          <div class="nav-dropdown">
+
+            <a href="innovations.html#technical-reels">
+              Technical reels
+            </a>
+
+            <a href="innovations.html#innovation-in-action">
+              Innovation in action
+            </a>
+
+            <a href="innovations.html#featured-projects">
+              Featured projects
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <a href="/news" data-i18n="nav.blog">News</a>
+
+        <a href="gallery.html" data-i18n="nav.gallery">
+          Gallery
+        </a>
+
+      </div>
+
+
+      <div class="site-nav-lang-wrap">
+
+        <button class="site-nav-lang"
+                aria-label="Language: English"
+                aria-expanded="false">
+          EN
+        </button>
+
+        <div class="site-nav-lang-menu" role="menu">
+
+          <button class="site-nav-lang-option active"
+                  data-value="EN"
+                  data-label="English"
+                  role="menuitem">
+            English
+          </button>
+
+          <button class="site-nav-lang-option"
+                  data-value="FR"
+                  data-label="Français"
+                  role="menuitem">
+            Français
+          </button>
+
+          <button class="site-nav-lang-option"
+                  data-value="KINY"
+                  data-label="Kinyarwanda"
+                  role="menuitem">
+            Kinyarwanda
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <button class="site-nav-toggle"
+              aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+
+
+    <a href="contact.html"
+       class="site-nav-contact"
+       data-i18n="nav.contact">
+      Contact us
+    </a>
+
+</nav>
+<!-- END: partial Header -->
+
+
+<main class="container">
+
+  <div class="section-title" data-aos="fade-up">
+
+    Contact <span class="accent">us</span>
+
+    <p class="section-subtitle"
+       style="font-size: 17px; font-weight: 400;">
+      Rwandan youth have emerged victorious in the inaugural
+    </p>
+
+  </div>
+
+
+  <div class="contact-layout"
+       data-aos="fade-up"
+       data-aos-delay="150">
+
+
+    <div class="contact-card">
+
+      <h3>Send us a Message</h3>
+
+
+      <!-- CONTACT FORM -->
+      <form id="contactForm"
+            method="POST"
+            action="https://formspree.io/f/xkjnyojp">
+
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+          <div>
+
+            <span class="field-label">
+              Identifier
+            </span>
+
+            <div class="contact-field">
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <span class="field-label">
+              Contact protocol
+            </span>
+
+            <div class="contact-field">
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <span class="field-label">
+          Sector of interest
+        </span>
+
+        <div class="contact-field">
+
+          <select name="sector">
+
+            <option>Academic Programs</option>
+            <option>Enterprise Software</option>
+            <option>Safety Services</option>
+
+          </select>
+
+        </div>
+
+
+        <span class="field-label">
+          Payload / Message
+        </span>
+
+        <div class="contact-field">
+
+          <textarea
+            name="message"
+            rows="1"
+            placeholder="Compose your message..."
+            required></textarea>
+
+        </div>
+
+
+        <div id="contactFormMsg"
+             class="contact-form-msg"
+             style="display:none;">
+        </div>
+
+
+        <!-- reCAPTCHA v2 CHECKBOX -->
+        <div class="recaptcha-container">
+          <div class="g-recaptcha" data-sitekey="6LeAyYYtAAAAAD8qK_il8XqzNW-PBJW5sTy9K0JE"></div>
+        </div>
+
+
+        <!-- SUBMIT BUTTON -->
+        <button
+          type="submit"
+          class="btn-send-msg">
+
+          SEND MESSAGE →
+
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div>
+
+      <!-- Leaflet Map Container -->
+      <div id="map" class="map-embed"></div>
+
+
+      <div class="contact-mini-cards">
+
+        <div class="contact-mini-card">
+
+          <span class="field-label">
+            Direct line
+          </span>
+
+          <strong>
+            +250 788 288 546
+          </strong>
+
+        </div>
+
+
+        <div class="contact-mini-card">
+
+          <span class="field-label">
+            Digital link
+          </span>
+
+          <strong>
+            info@codebrige.rw
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="nodes-social"
+       data-aos="fade-up">
+
+
+    <div class="social-card">
+
+      <h3>Social Hub</h3>
+
+      <p>
+        Follow our development updates and academic insights
+        across the social grid.
+      </p>
+
+
+      <div class="social-icons">
+
+        <span aria-label="X / Twitter">
+
+          <svg width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.6"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <path d="M4 4l7.5 9.5L4.5 20h2.3l6-6.7L18 20h2l-8-10.2L19 4h-2.3l-5.4 6L8 4z"/>
+
+          </svg>
+
+        </span>
+
+
+        <span aria-label="LinkedIn">
+
+          <svg width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.6"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <rect x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="3"/>
+
+            <line x1="8"
+                  y1="11"
+                  x2="8"
+                  y2="16"/>
+
+            <circle cx="8"
+                    cy="7.5"
+                    r="0.8"
+                    fill="currentColor"
+                    stroke="none"/>
+
+            <path d="M12 16v-3.2c0-1.5 1-2.3 2.2-2.3s2.3.8 2.3 2.3V16"/>
+
+            <line x1="12"
+                  y1="11"
+                  x2="12"
+                  y2="16"/>
+
+          </svg>
+
+        </span>
+
+
+        <span aria-label="GitHub">
+
+          <svg width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.6"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7.68 1.85.68 1.85v2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
+
+          </svg>
+
+        </span>
+
+
+        <span aria-label="YouTube">
+
+          <svg width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.6"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <rect x="2"
+                  y="6"
+                  width="20"
+                  height="12"
+                  rx="4"/>
+
+            <path d="M10 9.5l5 2.5-5 2.5z"
+                  fill="currentColor"
+                  stroke="none"/>
+
+          </svg>
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- BEGIN: partial Footer -->
+
+<footer class="site-footer">
+
+  <div class="footer-map-bg"
+       aria-hidden="true">
+  </div>
+
+
+  <div class="container footer-inner">
+
+
+    <div class="footer-col footer-col--brand">
+
+      <div class="footer-logo">
+
+        <img src="images/logow.png"
+             alt="Codebridge">
+
+      </div>
+
+
+      <p class="footer-tagline"
+         data-i18n="footer.tagline">
+
+        We develop, secure, and deploy cutting-edge digital solutions.
+
+      </p>
+
+
+      <div class="footer-social">
+
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-col footer-col--links">
+
+      <div class="footer-heading"
+           data-i18n="footer.quicklink">
+
+        Quick Link
+
+      </div>
+
+
+      <ul>
+
+        <li>
+          <a href="about.html">
+            <span class="footer-chevron"
+                  aria-hidden="true">
+              &raquo;
+            </span>
+
+            <span data-i18n="nav.about">
+              About us
+            </span>
+          </a>
+        </li>
+
+
+        <li>
+          <a href="services.html">
+
+            <span class="footer-chevron"
+                  aria-hidden="true">
+              &raquo;
+            </span>
+
+            <span data-i18n="nav.services">
+              Services
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a href="innovations.html">
+
+            <span class="footer-chevron"
+                  aria-hidden="true">
+              &raquo;
+            </span>
+
+            <span data-i18n="nav.innovations">
+              Innovations
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a href="/news">
+
+            <span class="footer-chevron"
+                  aria-hidden="true">
+              &raquo;
+            </span>
+
+            <span data-i18n="nav.blog">
+              News
+            </span>
+
+          </a>
+        </li>
+
+
+        <li>
+          <a href="careers.html">
+
+            <span class="footer-chevron"
+                  aria-hidden="true">
+              &raquo;
+            </span>
+
+            <span data-i18n="nav.careers">
+              Careers
+            </span>
+
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="footer-col footer-col--contact">
+
+      <div class="footer-heading"
+           data-i18n="footer.contact_us">
+
+        Contact Us
+
+      </div>
+
+
+      <div class="footer-info-row">
+
+        <span class="footer-info-icon"
+              aria-hidden="true">
+
+          <svg width="16"
+               height="16"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+
+            <circle cx="12"
+                    cy="10"
+                    r="3"/>
+
+          </svg>
+
+        </span>
+
+
+        <span data-i18n="footer.address">
+          Kigali &mdash; Gasabo, Kabuga (Rusoro), 26G9+6H9
+        </span>
+
+      </div>
+
+
+      <div class="footer-info-row">
+
+        <span class="footer-info-icon"
+              aria-hidden="true">
+
+          <svg width="16"
+               height="16"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <circle cx="12"
+                    cy="12"
+                    r="9"/>
+
+            <path d="M12 7v5l3 3"/>
+
+          </svg>
+
+        </span>
+
+
+        <div>
+
+          <strong data-i18n="footer.hours_label">
+            Opening Hours:
+          </strong>
+
+          <span data-i18n="footer.hours">
+            Mon&ndash;Fri: 8:00 AM &ndash; 5:00 PM,
+            Sat &amp; Sun: 12:00 PM &ndash; 5:00 PM
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-info-row">
+
+        <span class="footer-info-icon"
+              aria-hidden="true">
+
+          <svg width="16"
+               height="16"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+
+          </svg>
+
+        </span>
+
+
+        <div>
+
+          <strong data-i18n="footer.phone_label">
+            Phone Call:
+          </strong>
+
+          <span>
+            +250 788 288 546
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-info-row">
+
+        <span class="footer-info-icon"
+              aria-hidden="true">
+
+          <svg width="16"
+               height="16"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <rect x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2"/>
+
+            <path d="M3 6.5l9 6 9-6"/>
+
+          </svg>
+
+        </span>
+
+
+        <div>
+
+          <strong data-i18n="footer.email_label">
+            Email:
+          </strong>
+
+          <span>
+            info@codebrige.rw
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-col footer-col--map">
+
+      <div class="footer-heading"
+           data-i18n="footer.find_us">
+
+        Find Us
+
+      </div>
+
+
+      <div class="footer-map">
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m3!2m1!1sLight+Church+Kabuga,26G9%2B6H9,Kabuga!6i16"
+          title="Codebridge HQ location map"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Map showing Codebridge HQ in Kabuga (Rusoro), Kigali">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="container">
+
+    <div class="footer-bottom">
+
+      <p class="footer-copyright"
+         data-i18n="footer.copyright">
+
+        &copy; All rights reserved 2026 by Codebridge.
+
+      </p>
+
+
+      <a href="privacy-policy.html"
+         class="footer-privacy-link"
+         data-i18n="footer.privacy_policy">
+
+        Privacy Policy
+
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+  <button class="hero-ai-btn" aria-label="AI assistant" type="button">
+  <img src="chat.png" alt="AI assistant" class="hero-ai-icon" />
+</button>
+
+<!-- END: partial Footer -->
+
+
+<!-- Leaflet JavaScript -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+
+  // Initialize map centered on Kabuga (Rusoro), Kigali, Rwanda
+  const map = L.map('map').setView(
+    [-1.9745, 30.2190],
+    15
+  );
+
+
+  // Load OpenStreetMap tiles
+
+  L.tileLayer(
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      maxZoom: 19,
+
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }
+  ).addTo(map);
+
+
+  // Add marker for Codebridge HQ
+
+  const marker = L.marker(
+    [-1.9745, 30.2190]
+  ).addTo(map);
+
+
+  // Attach popup
+
+  marker
+    .bindPopup(
+      '<b>Codebridge HQ</b><br>26G9+6H9, Kabuga (Rusoro), Kigali, Rwanda'
+    )
+    .openPopup();
+
+</script>
+
+
+<!-- Website JavaScript -->
+
+<script src="i18n-extra.js?v=db-ai-1"></script>
+
+<script src="i18n.js"></script>
+
+<script src="lang-switcher.js"></script>
+
+<script src="cb-enhancements.js?v=preloader-1"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<script>
+  AOS.init({
+    duration: 700,
+    once: true
+  });
+</script>
+
+</body>
+</html>

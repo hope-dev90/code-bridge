@@ -1,0 +1,12 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Block direct browser access to source/config folders — index.php reads
+# them via require(), which is unaffected by these rules.
+RewriteRule ^(config|database|Core|controllers|models|middleware|helpers)/ - [F,L]
+
+# Belt-and-suspenders: if a debug script is ever left in the upload, block it.
+<FilesMatch "^(debug_db|list_tables|tmp_check)\.php$">
+    Require all denied
+</FilesMatch>

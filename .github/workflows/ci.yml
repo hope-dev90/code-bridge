@@ -1,0 +1,142 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ──────────────────────────────────────────────────────────────
+  # PHP lint & static analysis
+  # ──────────────────────────────────────────────────────────────
+  php:
+    name: PHP Lint & Analyse
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, pdo, mysqli, json, intl, dom, xml
+          tools: composer:v2, phpstan, php-cs-fixer
+
+      # Cache Composer dependencies
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      # Syntax check every PHP file in the project (catches parse errors)
+      - name: PHP syntax check
+        run: |
+          find . -name "*.php" \
+            -not -path "./vendor/*" \
+            -not -path "./.git/*" \
+            | xargs -r php -l
+
+      # Code style — only check, don't auto-fix in CI
+      - name: PHP-CS-Fixer dry-run
+        run: |
+          php-cs-fixer check \
+            --rules=@PSR12 \
+            --diff \
+            --no-interaction \
+            careers-backend/ \
+            careers-admin.php \
+            contact-submit.php \
+            cb-data.php \
+            chat.php \
+          || true
+        # '|| true' keeps CI green while you adopt the style;
+        # remove it once all files pass to make violations blocking.
+
+      # Static analysis on the custom backend (not vendor/TYPO3 core)
+      - name: PHPStan analyse
+        run: |
+          phpstan analyse \
+            careers-backend/ \
+            careers-admin.php \
+            contact-submit.php \
+            cb-data.php \
+            chat.php \
+            --level=5 \
+            --no-progress \
+        || true
+        # Raise --level gradually (max is 9). Remove '|| true' when clean.
+
+  # ──────────────────────────────────────────────────────────────
+  # HTML / CSS / JS validation
+  # ──────────────────────────────────────────────────────────────
+  frontend:
+    name: Frontend Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Basic JS syntax check (no build tool needed)
+      - name: JS syntax check
+        run: |
+          for f in $(find . -name "*.js" -not -path "./vendor/*" -not -path "./.git/*"); do
+            node --check "$f" && echo "OK: $f"
+          done
+
+      # CSS lint using stylelint (zero-config, standard rules)
+      - name: Install stylelint
+        run: npm install --save-dev stylelint@16 stylelint-config-standard@36
+
+      - name: CSS lint
+        run: |
+          npx stylelint "**/*.css" \
+            --config '{"extends":"stylelint-config-standard"}' \
+            --allow-empty-input \
+          || true
+        # Remove '|| true' to make violations blocking.
+
+  # ──────────────────────────────────────────────────────────────
+  # SQL schema check (dry-run with mysqldump parsing)
+  # ──────────────────────────────────────────────────────────────
+  schema:
+    name: SQL Schema Validate
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ci_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply schema
+        run: |
+          mysql -h 127.0.0.1 -uroot -proot ci_test \
+            < careers-backend/schema.sql
+        env:
+          MYSQL_PWD: root

@@ -1,0 +1,107 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  # Allow manual re-deploys from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false   # never cancel a running deploy mid-flight
+
+jobs:
+  # ──────────────────────────────────────────────────────────────
+  # Deploy to cPanel shared hosting via SSH / rsync
+  #
+  # Required repository secrets (Settings → Secrets → Actions):
+  #   SSH_HOST        — server hostname, e.g. codebrige.rw
+  #   SSH_USERNAME    — cPanel / SSH username
+  #   SSH_PRIVATE_KEY — contents of your local ~/.ssh/id_ed25519 (private key)
+  #   SSH_PORT        — SSH port (cPanel default is 21098; standard is 22)
+  #   DEPLOY_PATH     — absolute remote path, e.g. /home/username/public_html
+  # ──────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    environment: production     # enables optional manual approval gate
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2        # needed for changed-files detection
+
+      # ── Build step (Composer, no dev deps on production) ──────
+      - name: Set up PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, pdo, mysqli, json, intl, dom, xml
+          tools: composer:v2
+
+      - name: Install Composer dependencies (no dev)
+        run: |
+          composer install \
+            --no-interaction \
+            --prefer-dist \
+            --no-progress \
+            --no-dev \
+            --optimize-autoloader
+
+      # ── Set up SSH key ────────────────────────────────────────
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      # ── Deploy via rsync over SSH ─────────────────────────────
+      - name: Deploy via rsync
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='*.md' \
+            --exclude='*.lock' \
+            --exclude='node_modules/' \
+            --exclude='dev/' \
+            --exclude='brainlyy/' \
+            --exclude='careers.codebrige.rw/' \
+            --exclude='.well-known/' \
+            --exclude='careers-backend/error_log' \
+            --exclude='error_log' \
+            --exclude='careers-backend.zip' \
+            ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+
+      # ── Optional: post-deploy tasks on the server ─────────────
+      - name: Post-deploy tasks (SSH)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Clear any opcode cache
+            php -r "opcache_reset();" 2>/dev/null || true
+            # Run pending DB migrations (if you add them later)
+            # php ${{ secrets.DEPLOY_PATH }}/careers-backend/migrate.php
+            echo "Deploy complete at $(date)"
+
+      # ── Deployment summary ────────────────────────────────────
+      - name: Summary
+        if: success()
+        run: |
+          echo "### Deployment successful :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Branch | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Triggered by | @${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Time | $(date -u '+%Y-%m-%d %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,209 @@
+
+renderingOptions:
+  submitButtonLabel: Submit
+type: Form
+identifier: codebridgejobapplicationform
+label: 'Codebridge job application form'
+prototypeName: standard
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous '
+      nextButtonLabel: 'Next '
+    type: Page
+    identifier: page-1
+    label: 'Personal information'
+    renderables:
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-1
+        label: 'Full name'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Add full name'
+            required: required
+            minlength: '5'
+            maxlength: '100'
+          validationErrorMessages:
+            -
+              code: 1238110957
+              message: 'The name must a bit long or short'
+            -
+              code: 1269883975
+              message: 'The name must a bit long or short'
+            -
+              code: 1428504122
+              message: 'The name must a bit long or short'
+            -
+              code: 1238108068
+              message: 'The name must a bit long or short'
+            -
+              code: 1238108069
+              message: 'The name must a bit long or short'
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            options:
+              minimum: '5'
+              maximum: '100'
+            identifier: StringLength
+      -
+        defaultValue: ''
+        validators:
+          -
+            identifier: EmailAddress
+          -
+            identifier: NotEmpty
+        type: Email
+        identifier: email-1
+        label: 'Email address'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Enter your email'
+            required: required
+          validationErrorMessages:
+            -
+              code: 1221560910
+              message: 'Invalid email'
+            -
+              code: 1221560718
+              message: 'Invalid email'
+            -
+              code: 1347992400
+              message: 'Invalid email'
+            -
+              code: 1347992453
+              message: 'Invalid email'
+      -
+        defaultValue: ''
+        type: Telephone
+        identifier: telephone-1
+        label: 'Telephone number'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Enter phone number'
+          validationErrorMessages:
+            -
+              code: 1221565130
+              message: 'Invalid Rwanda phone'
+        validators:
+          -
+            options:
+              regularExpression: '/^(\+250|250|0)?7[2389]\d{7}$/'
+            identifier: RegularExpression
+      -
+        defaultValue: ''
+        type: Url
+        identifier: url-1
+        label: 'Add any social media or portifolio'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Add any social media'
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - application/pdf
+          fluidAdditionalAttributes:
+            required: required
+          validationErrorMessages:
+            -
+              code: 1221560910
+              message: 'The file must not exceed 10 MB and it must be .pdf'
+            -
+              code: 1221560718
+              message: 'The file must not exceed 10 MB and it must be .pdf'
+            -
+              code: 1347992400
+              message: 'The file must not exceed 10 MB and it must be .pdf'
+            -
+              code: 1347992453
+              message: 'The file must not exceed 10 MB and it must be .pdf'
+        type: FileUpload
+        identifier: fileupload-1
+        label: 'Add resume'
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            options:
+              minimum: 0B
+              maximum: 10M
+            identifier: FileSize
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-3
+    label: Education
+    renderables:
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-2
+        label: 'Institution name'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Enter your institution of study'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-3
+        label: Degree
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Add your degree'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-4
+        label: 'Field of study'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Field of study'
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-5
+        label: 'Soft skills'
+        properties:
+          fluidAdditionalAttributes:
+            placeholder: 'Add your soft skills'
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-4
+    label: Position
+    renderables:
+      -
+        properties:
+          options:
+            'Software engineer': 'Software engineer'
+            'UI/UX Designer': 'UI/UX Designer'
+            Accountant: Accountant
+            Cleaner: Cleaner
+          fluidAdditionalAttributes:
+            required: required
+        type: SingleSelect
+        identifier: singleselect-1
+        label: 'Select job (Job detailed are given on email)'
+        validators:
+          -
+            identifier: NotEmpty

@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About us | Codebridge</title>
+    <meta name="description" content="About Codebridge: mission, vision, values, journey and partners in Kigali, Rwanda.">
+    <link rel="canonical" href="https://codebrige.rw/about">
+    <meta property="og:title" content="About us | Codebridge">
+    <meta property="og:description" content="Mission, vision, values and the people behind Codebridge.">
+    <meta property="og:image" content="https://codebrige.rw/images/logo.png">
+    <meta property="og:url" content="https://codebrige.rw/about">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=round-1">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png?v=round-1">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=round-1">
+<link rel="icon" href="/favicon.ico?v=round-1" sizes="any">
+    <link rel="stylesheet" href="style.css?v=nav-logo-1" />
+    <link rel="stylesheet" href="cb-final.css?v=nav-logo-1">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+  <style>
+    .play-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(100, 160, 255, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cb-white);
+      font-size: 18px;
+      position: relative;
+      z-index: 1;
+      transition:
+        transform 0.2s,
+        background 0.2s;
+    }
+    .play-circle:hover {
+      transform: scale(1.1);
+      background: var(--cb-red);
+    }
+    .video-frame {
+      position: relative; /* Crucial: Keeps absolute children inside this container */
+      width: 100%;
+      max-width: 800px; /* Or whatever width you prefer */
+      height: 450px; /* Set a fixed or responsive height */
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vp-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+  <body class="about-page">
+<!-- BEGIN: partial Header (nav) -->
+   <nav class="site-nav" aria-label="Main navigation">
+  <div class="site-nav-pill">
+    <a href="index.html" class="site-nav-logo" aria-label="Codebridge home">
+      <img src="images/logo.png" alt="Codebridge logo" />
+    </a>
+    <div class="site-nav-links">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="about.html" class="nav-item-link active" data-i18n="nav.about">About us</a>
+          <button class="nav-item-caret" aria-label="Toggle About us submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="about.html#mission-vision" data-i18n="nav.about.mission">Mission &amp; vision</a>
+          <a href="about.html#journey" data-i18n="nav.about.journey">Our journey</a>
+          <a href="about.html#team" data-i18n="nav.about.team">Our team</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="services.html" class="nav-item-link" data-i18n="nav.services">Services</a>
+          <button class="nav-item-caret" aria-label="Toggle Services submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="services.html#cybersecurity" data-i18n="nav.services.cyber">Cybersecurity</a>
+          <a href="services.html#ai-ml" data-i18n="nav.services.ai">AI &amp; Machine Learning</a>
+          <a href="services.html#consultancy" data-i18n="nav.services.consultancy">Consultancy &amp; Strategy</a>
+          <a href="services.html#internship" data-i18n="nav.services.internship">Internship Program</a>
+          <a href="services.html#ikiraro-hub" data-i18n="nav.services.ikiraroHub">IKiraro Innovation Hub</a>
+          <a href="https://ikiraro-elearrning.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="nav.services.ikiraroElearning">IKiraro E-Learning</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="careers.html" class="nav-item-link" data-i18n="nav.careers">Careers</a>
+          <button class="nav-item-caret" aria-label="Toggle Careers submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="careers.html#job-opportunities" data-i18n="nav.careers.jobs">Job opportunities</a>
+          <a href="careers.html#internships" data-i18n="nav.careers.internships">Internship programs</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="innovations.html" class="nav-item-link" data-i18n="nav.innovations">Innovations</a>
+          <button class="nav-item-caret" aria-label="Toggle Innovations submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="innovations.html#technical-reels" data-i18n="nav.innovations.reels">Technical reels</a>
+          <a href="innovations.html#innovation-in-action" data-i18n="nav.innovations.action">Innovation in action</a>
+          <a href="innovations.html#featured-projects" data-i18n="nav.innovations.projects">Featured projects</a>
+        </div>
+      </div>
+      <a href="/news" data-i18n="nav.blog">News</a>
+      <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+    </div>
+    <div class="site-nav-lang-wrap">
+      <button class="site-nav-lang" aria-label="Language: English" aria-expanded="false">EN</button>
+      <div class="site-nav-lang-menu" role="menu">
+        <button class="site-nav-lang-option active" data-value="EN" data-label="English" role="menuitem">English</button>
+        <button class="site-nav-lang-option" data-value="FR" data-label="Français" role="menuitem">Français</button>
+        <button class="site-nav-lang-option" data-value="KINY" data-label="Kinyarwanda" role="menuitem">Kinyarwanda</button>
+      </div>
+    </div>
+    <button class="site-nav-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <a href="contact.html" class="site-nav-contact" data-i18n="nav.contact">Contact us</a>
+</nav>
+    <!-- END: partial Header -->
+
+    <main class="container">
+      <section class="about-hero" >
+        <div class="class" data-aos="fade-right">
+          <div class="about-hero-text" >
+            <h1 data-i18n="about.hero_title">Who we are</h1>
+            <p data-i18n="about.hero_body">
+              Codebridge is a tech and software company in Rwanda committed to
+              enhancing and improving the competitiveness and competence of its
+              clients by enabling them to succeed through the power of
+              information technology security. We have nine years of experience.
+            </p>
+          </div>
+          <div class="feature-row">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="3"></circle>
+                  <path d="M12 11v2"></path>
+                  <path d="M3 21v-4l4-2 4 3 4-4 6 3v4z"></path>
+                  <path d="M3 21h18"></path>
+                </svg>
+              </div>
+              <span class="feature-label" data-i18n="about.feature_best_company"> Best tech company</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 18h6"></path>
+                  <path d="M10 22h4"></path>
+                  <path
+                    d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"
+                  ></path>
+                  <circle cx="18" cy="6" r="1.2"></circle>
+                </svg>
+              </div>
+              <span class="feature-label"><span data-i18n="about.feature_best_service_1">The best</span><br /><span data-i18n="about.feature_best_service_2">service</span></span>
+            </div>
+          </div>
+        </div>
+   <div class="placeholder-img" style="
+   width: 550px; 
+   " data-aos="fade-left"><img src="images/un.svg" alt="" /></div>
+        <!-- Left: text -->
+
+        
+      </section>
+
+      <section id="mission-vision" class="cb-mvv about-mvv" style="scroll-margin-top: 110px;">
+        <div class="section-title"><span data-i18n="about.mvv_title_pre">Our vision, mission &amp;</span> <span class="accent" data-i18n="about.mvv_title_accent">values</span></div>
+        <p class="section-subtitle" data-i18n="mvv.about_intro">
+          We bring clarity to strategy by showing how our mission, vision and values work together in every project.
+        </p>
+        <div class="cb-mvv-grid">
+          <article class="cb-mvv-card cb-mvv-card--mission">
+            <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+            <h4 data-i18n="mvv.mission_kicker">Mission</h4>
+            <h3 data-i18n="mvv.mission_title">Build what organisations can actually run</h3>
+            <p data-i18n="mvv.mission_body">We combine engineering, research and creative thinking to turn ambitious ideas into scalable digital products for business, HR and government partners.</p>
+          </article>
+          <article class="cb-mvv-card cb-mvv-card--vision">
+            <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h4 data-i18n="mvv.vision_kicker">Vision</h4>
+            <h3 data-i18n="mvv.vision_title">Rwanda’s trusted technology partner</h3>
+            <p data-i18n="mvv.vision_body">To be Rwanda's most trusted technology partner, bridging global best practice with local expertise.</p>
+          </article>
+          <article class="cb-mvv-card cb-mvv-card--values">
+            <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.26L22 9.27l-5 4.88 1.18 6.88L12 17.77l-6.18 3.26L7 14.15 2 9.27l7.1-1.01L12 2z"/></svg></div>
+            <h4 data-i18n="mvv.values_kicker">Values</h4>
+            <h3 data-i18n="mvv.values_title">Integrity in every delivery</h3>
+            <p data-i18n="mvv.values_body">Integrity, craftsmanship and continuous learning guide every project we deliver.</p>
+          </article>
+        </div>
+      </section>
+
+      <div id="journey" class="section-title" data-aos="fade-up" style="scroll-margin-top: 110px;"><span data-i18n="about.journey_title">Our</span> <span class="accent" data-i18n="about.journey_title_accent">journey</span></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="about.journey_subtitle">Building the future, one step at a time</p>
+
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-year" data-i18n="about.timeline_2018_year">2018 — The Foundation</div>
+          <p class="timeline-desc" data-i18n="about.timeline_2018_desc">
+            CodeBridge was founded in January 2018 with a simple mission: bridge
+            the gap between complex technology and real-world business needs.
+            Starting in a small co-working space in Kigali, our founding team of
+            three engineers built their first client project within six months.
+          </p>
+        </div>
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+          <div class="timeline-year" data-i18n="about.timeline_2019_year">2019 — First Major Milestone</div>
+          <p class="timeline-desc" data-i18n="about.timeline_2019_desc">
+            We launched our proprietary workflow automation platform, securing
+            our first 50 enterprise clients. This year marked our shift from a
+            service-based shop to a product-driven technology partner.
+          </p>
+        </div>
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="timeline-year" data-i18n="about.timeline_2022_year">2022 — Expansion &amp; Recognition</div>
+          <p class="timeline-desc" data-i18n="about.timeline_2022_desc">
+            We expanded into three new markets and were recognized as a "Top
+            Emerging Tech Partner." Our R&amp;D division officially launched,
+            focusing on AI-driven process optimization.
+          </p>
+        </div>
+        <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+          <div class="timeline-year" data-i18n="about.timeline_2024_year">2024 — The Next Chapter</div>
+          <p class="timeline-desc" data-i18n="about.timeline_2024_desc">
+            Today, CodeBridge powers over 300+ businesses with secure, scalable
+            and future-ready software solutions. We continue to invest in
+            open-source tools, developer education and sustainable tech
+            practices.
+          </p>
+        </div>
+      </div>
+
+      <section class="stats-banner" >
+        <div data-aos="zoom-in">
+          <h2>
+            <span data-i18n="about.stats_title_pre">The</span> <em class="accent" style="color: red" data-i18n="about.stats_title_accent">journey</em> <span data-i18n="about.stats_title_post">so far</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="about.stats_subtitle">
+            We believe that things don't have to stay the way they've always been
+          </p>
+          <div class="stats-row">
+            <div>
+              <div class="stat-num">20+</div>
+              <div class="stat-label" data-i18n="about.stats_label_experts">Trained experts</div>
+            </div>
+            <div>
+              <div class="stat-num">8+</div>
+              <div class="stat-label" data-i18n="about.stats_label_experience">Years of experience</div>
+            </div>
+            <div>
+              <div class="stat-num">20+</div>
+              <div class="stat-label" data-i18n="about.stats_label_clients">Enterprise clients</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-title" data-aos="fade-up">
+        <span data-i18n="landing.partners_title_pre">Trusted</span> <span class="accent" data-i18n="landing.partners_title_accent">partners</span>
+      </div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="about.partners_subtitle">
+        Working with leading institutions that drive digital transformation
+        across Rwanda and Africa.
+      </p>
+            <div class="cb-partners-grid">
+      <a class="cb-partner-card" href="https://coregroup.rw/" target="_blank" rel="noopener noreferrer" aria-label="Core Group website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/coregroup.png" alt="Core Group"></div>
+        <span class="cb-partner-name">Core Group</span>
+      </a>
+      <a class="cb-partner-card" href="https://loxotech.com/#home" target="_blank" rel="noopener noreferrer" aria-label="Loxotech website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/loxotech.png" alt="Loxotech"></div>
+        <span class="cb-partner-name">Loxotech</span>
+      </a>
+      <a class="cb-partner-card" href="https://leplaisirdenfant.com/" target="_blank" rel="noopener noreferrer" aria-label="Le Plaisir d’Enfant School website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/leplaisir.jpg" alt="Le Plaisir d’Enfant School"></div>
+        <span class="cb-partner-name">Le Plaisir d’Enfant School</span>
+      </a>
+      <a class="cb-partner-card" href="https://saintemanuelschool.com/" target="_blank" rel="noopener noreferrer" aria-label="Saint Emmanuel School Complex website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/saintemmanuel.png" alt="Saint Emmanuel School Complex"></div>
+        <span class="cb-partner-name">Saint Emmanuel School Complex</span>
+      </a>
+      <a class="cb-partner-card" href="https://www.codiblegroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Codible Group website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/codible.png" alt="Codible Group"></div>
+        <span class="cb-partner-name">Codible Group</span>
+      </a>
+      <a class="cb-partner-card" href="https://kasschool.wordpress.com/" target="_blank" rel="noopener noreferrer" aria-label="Karenge Adventist Secondary School website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/karenge.png" alt="Karenge Adventist Secondary School"></div>
+        <span class="cb-partner-name">Karenge Adventist Secondary School</span>
+      </a>
+      <a class="cb-partner-card" href="/services#ikiraro-hub" aria-label="IKiraro Innovation Hub, a Codebridge service">
+        <div class="cb-partner-logo"><img src="images/logo.png" alt="IKiraro Innovation Hub / Codebridge"></div>
+        <span class="cb-partner-name">IKiraro Innovation Hub</span>
+      </a>
+    </div>
+
+      <section class="video-banner" data-aos="fade-up">
+        <h2>
+          <span data-i18n="about.video_title_pre">Know more about</span>
+          <em class="accent" style="color: red" data-i18n="about.video_title_accent">Codebridge</em>
+        </h2>
+        <div class="video-frame" data-video="images/visit.mp4">
+          <img src="images/handsb.png" alt="" class="vp-poster" />
+          <button class="play-circle" aria-label="Play Data Flow Dynamics">
+            ▶
+          </button>
+        </div>
+      </section>
+
+      <div id="team" class="section-title" data-aos="fade-up" style="scroll-margin-top: 110px;">
+        <span data-i18n="about.team_title_pre">The minds</span> <span class="accent" data-i18n="about.team_title_accent">behind</span> <span data-i18n="about.team_title_post">the mission</span>
+      </div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="about.team_subtitle">
+        We are a distributed team of designers, developers, and strategists
+        united by a love for seamless digital experiences.
+      </p>
+
+      <div class="team-group-heading" data-aos="fade-up">
+        <span class="team-group-eyebrow" data-i18n="about.team_group_eyebrow">Our team</span>
+        <span class="team-group-line"></span>
+      </div>
+      <div class="section-title" style="margin:0 0 40px;" data-aos="fade-up"><span data-i18n="about.team_leadership_title_pre">Leadership</span> <span class="accent" data-i18n="about.team_leadership_title_accent">team</span></div>
+
+      <div class="team-leadership-row">
+      <div class="team-member team-member--orange" data-aos="fade-up">
+        <div class="team-role" data-i18n="about.role_ceo">Chief Executive Officer</div>
+        <div class="team-member-row">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="images/p.png" alt="" />
+          </div>
+          <div>
+            <h3 class="team-name">HABUMUGISHA <em>Olivier</em></h3>
+            <p class="team-bio" data-i18n="about.bio_olivier">
+              Olivier leads Codebridge’s product and partnerships, matching engineering to what organisations in Rwanda actually need to run.
+            </p>
+            <div class="team-social">
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  style="opacity: 0.4"
+                >
+                  <path
+                    d="M18.24 2h3.28l-7.16 8.19L23 22h-6.6l-5.17-6.76L5.3 22H2.02l7.66-8.76L1 2h6.76l4.67 6.17L18.24 2Zm-1.15 18h1.82L7.02 3.9H5.06L17.09 20Z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  style="opacity: 0.4"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="0.6"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-member team-member--teal" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-role" data-i18n="about.role_cfo">Chief Financial Officer</div>
+        <div class="team-member-row">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="images/p.png" alt="" />
+          </div>
+          <div>
+            <h3 class="team-name">MWENZI <em>Teddy</em></h3>
+            <p class="team-bio" data-i18n="about.bio_teddy">
+              Teddy runs finance and operations so projects stay on budget and the company can grow.
+            </p>
+            <div class="team-social">
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.24 2h3.28l-7.16 8.19L23 22h-6.6l-5.17-6.76L5.3 22H2.02l7.66-8.76L1 2h6.76l4.67 6.17L18.24 2Zm-1.15 18h1.82L7.02 3.9H5.06L17.09 20Z"
+                    style="opacity: 0.4"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  style="opacity: 0.4"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="0.6"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div><!-- /.team-leadership-row -->
+      <div class="team-group-heading" data-aos="fade-up">
+        <span class="team-group-eyebrow" data-i18n="about.team_group_eyebrow">Our team</span>
+        <span class="team-group-line"></span>
+      </div>
+      <div class="section-title" style="margin:0 0 40px;" data-aos="fade-up"><span data-i18n="about.team_technical_title_pre">Technical</span> <span class="accent" data-i18n="about.team_technical_title_accent">team</span></div>
+
+      <div class="tech-team-row">
+      <div class="team-member team-member--red" data-aos="fade-up" data-aos-delay="0">
+        <div class="team-role" data-i18n="about.role_lead_engineer">Lead Software Engineer</div>
+        <div class="team-member-row">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="images/p.png" alt="" />
+          </div>
+          <div>
+            <h3 class="team-name">MUGISHA <em>Patrick</em></h3>
+            <p class="team-bio" data-i18n="about.bio_patrick">
+              Patrick leads engineering on client platforms, from architecture to code review.
+            </p>
+            <div class="team-social">
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  style="opacity: 0.4"
+                >
+                  <path
+                    d="M18.24 2h3.28l-7.16 8.19L23 22h-6.6l-5.17-6.76L5.3 22H2.02l7.66-8.76L1 2h6.76l4.67 6.17L18.24 2Zm-1.15 18h1.82L7.02 3.9H5.06L17.09 20Z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  style="opacity: 0.4"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="0.6"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-member team-member--blue" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-role" data-i18n="about.role_head_cyber">Head of Cybersecurity</div>
+        <div class="team-member-row">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="images/p.png" alt="" />
+          </div>
+          <div>
+            <h3 class="team-name">UWIMANA <em>Sandra</em></h3>
+            <p class="team-bio" data-i18n="about.bio_sandra">
+              Sandra runs security audits and the cybersecurity curriculum for IKiraro programmes.
+            </p>
+            <div class="team-social">
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  style="opacity: 0.4"
+                >
+                  <path
+                    d="M18.24 2h3.28l-7.16 8.19L23 22h-6.6l-5.17-6.76L5.3 22H2.02l7.66-8.76L1 2h6.76l4.67 6.17L18.24 2Zm-1.15 18h1.82L7.02 3.9H5.06L17.09 20Z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  style="opacity: 0.4"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="0.6"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-member team-member--teal" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-role" data-i18n="about.role_devops">DevOps Engineer</div>
+        <div class="team-member-row">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="images/p.png" alt="" />
+          </div>
+          <div>
+            <h3 class="team-name">NIYONZIMA <em>Eric</em></h3>
+            <p class="team-bio" data-i18n="about.bio_eric">
+              Eric designs the CI/CD pipelines and cloud infrastructure behind every Codebridge product.
+            </p>
+            <div class="team-social">
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  style="opacity: 0.4"
+                >
+                  <path
+                    d="M18.24 2h3.28l-7.16 8.19L23 22h-6.6l-5.17-6.76L5.3 22H2.02l7.66-8.76L1 2h6.76l4.67 6.17L18.24 2Zm-1.15 18h1.82L7.02 3.9H5.06L17.09 20Z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  style="opacity: 0.4"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.2" />
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="0.6"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div><!-- /.tech-team-row -->
+    </main>
+
+    <!-- BEGIN: partial Footer -->
+    <footer class="site-footer">
+      <div class="footer-map-bg" aria-hidden="true"></div>
+      <div class="container footer-inner">
+        <div class="footer-col footer-col--brand">
+          <div class="footer-logo"><img src="images/logow.png" alt="Codebridge"></div>
+          <p class="footer-tagline" data-i18n="footer.tagline">We develop, secure, and deploy cutting-edge digital solutions.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="X / Twitter">X</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+          </div>
+        </div>
+        <div class="footer-col footer-col--links">
+          <div class="footer-heading" data-i18n="footer.quicklink">Quick Link</div>
+          <ul>
+            <li><a href="/about"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.about">About us</span></a></li>
+            <li><a href="/services"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.services">Services</span></a></li>
+            <li><a href="/innovations"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.innovations">Innovations</span></a></li>
+            <li><a href="/news"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.blog">News</span></a></li>
+            <li><a href="/careers"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.careers">Careers</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <div class="footer-heading" data-i18n="footer.contact_us">Contact Us</div>
+          <div class="footer-info-row">
+            <span class="footer-info-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span data-i18n="footer.address">Kigali &mdash; Gasabo, Kabuga (Rusoro), 26G9+6H9</span>
+          </div>
+          <div class="footer-info-row">
+            <span class="footer-info-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </span>
+            <div>
+              <strong data-i18n="footer.hours_label">Opening Hours:</strong>
+              <span data-i18n="footer.hours">Mon&ndash;Fri: 8:00 AM &ndash; 5:00 PM, Sat &amp; Sun: 12:00 PM &ndash; 5:00 PM</span>
+            </div>
+          </div>
+          <div class="footer-info-row">
+            <span class="footer-info-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <div>
+              <strong data-i18n="footer.phone_label">Phone Call:</strong>
+              <span>+250 788 288 546</span>
+            </div>
+          </div>
+          <div class="footer-info-row">
+            <span class="footer-info-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6 9-6"/></svg>
+            </span>
+            <div>
+              <strong data-i18n="footer.email_label">Email:</strong>
+              <span>info@codebrige.rw</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-col footer-col--map">
+          <div class="footer-heading" data-i18n="footer.find_us">Find Us</div>
+          <div class="footer-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m3!2m1!1sLight+Church+Kabuga,26G9%2B6H9,Kabuga!6i16" title="Codebridge HQ location map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" aria-label="Map showing Codebridge HQ in Kabuga (Rusoro), Kigali"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright" data-i18n="footer.copyright">&copy; All rights reserved 2026 by Codebridge.</p>
+          <a href="/privacy-policy" class="footer-privacy-link" data-i18n="footer.privacy_policy">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+    <button class="hero-ai-btn" aria-label="AI assistant" type="button">
+  <img src="chat.png" alt="AI assistant" class="hero-ai-icon" />
+</button>
+    <!-- END: partial Footer -->
+
+    <script src="i18n-extra.js?v=db-ai-1"></script>
+    <script src="i18n.js"></script>
+<script src="lang-switcher.js"></script>
+<script src="cb-enhancements.js?v=preloader-1"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 700, once: true });</script>
+    <script>
+      document.querySelectorAll(".video-frame").forEach((frame) => {
+        frame.addEventListener("click", () => {
+          const videoSrc = frame.dataset.video;
+          if (!videoSrc) return;
+
+          // Create video element
+          const video = document.createElement("video");
+          video.src = videoSrc;
+          video.controls = true;
+          video.autoplay = true;
+          video.style.cssText =
+            "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:10;";
+
+          // Clear the poster image & play button, then append video
+          frame.innerHTML = "";
+          frame.appendChild(video);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+version: 2
+
+updates:
+  # ── Composer (PHP dependencies) ───────────────────────────────
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Africa/Kigali"
+    open-pull-requests-limit: 5
+    # Group all non-major updates into a single PR to reduce noise
+    groups:
+      composer-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    labels:
+      - "dependencies"
+      - "php"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # TYPO3 core packages move together; ignore them here —
+    # upgrade the whole TYPO3 version intentionally.
+    ignore:
+      - dependency-name: "typo3/*"
+      - dependency-name: "typo3fluid/*"
+
+  # ── GitHub Actions ────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Africa/Kigali"
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(actions)"
+      include: "scope"

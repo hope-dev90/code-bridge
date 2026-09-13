@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en" class="cb-loading">
+<head><meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style id="cb-preloader-css">
+      html.cb-loading { background: #ffffff; }
+      html.cb-loading,
+      html.cb-loading body { overflow: hidden !important; }
+      html.cb-loading .ai-fab,
+      html.cb-loading .hero-ai-btn,
+      html.cb-loading .ai-chat-panel,
+      html.cb-loading .ai-chat-overlay {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+      #cb-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 100000 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        pointer-events: all;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+        perspective: 1100px;
+      }
+      #cb-preloader.is-done {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+       /* ---- Newsletter / Stay ahead ---- */
+      .newsletter-section {
+        background: var(--cb-navy);
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0;
+        padding: 80px 40px;
+        text-align: center;
+        color: var(--cb-white);
+        margin-bottom: 60px;
+      }
+      .newsletter-section h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin: 0 0 10px;
+      }
+      .newsletter-section .sub {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .newsletter-section .sub2 {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        margin-bottom: 28px;
+      }
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease;
+}
+
+.newsletter-form:focus-within {
+  border-color: var(--cb-red);
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.newsletter-form button {
+  flex-shrink: 0;
+  background: var(--cb-red);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.newsletter-form button:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.newsletter-form button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px;
+    gap: 8px;
+  }
+  .newsletter-form input[type="email"] {
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+  }
+  .newsletter-form button {
+    width: 100%;
+  }
+}
+      .form-feedback {
+        margin-top: 15px;
+        font-size: 13px;
+        display: none;
+      }
+      .cb-preloader-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        width: min(400px, 84vw);
+        transform-style: preserve-3d;
+        animation: cb-preloader-float 6s ease-in-out infinite;
+      }
+      .cb-preloader-brand img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transform-origin: 50% 50%;
+        transform-style: preserve-3d;
+        will-change: transform;
+        animation: cb-preloader-rotate 6s ease-in-out infinite;
+      }
+      .cb-preloader-ring {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: 2px solid rgba(26, 26, 77, 0.12);
+        border-top-color: #1a1a4d;
+        border-right-color: #ee3a2f;
+        animation: cb-preloader-spin 1.05s linear infinite;
+      }
+      @keyframes cb-preloader-rotate {
+        0%   { transform: rotateY(0deg); }
+        50%  { transform: rotateY(180deg); }
+        100% { transform: rotateY(0deg); }
+      }
+      @keyframes cb-preloader-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+      @keyframes cb-preloader-spin {
+        to { transform: rotate(360deg); }
+      }
+      @media (max-width: 640px) {
+        .cb-preloader-brand { width: min(300px, 88vw); gap: 22px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cb-preloader-brand,
+        .cb-preloader-brand img,
+        .cb-preloader-ring { animation: none; }
+        .cb-preloader-ring { border-top-color: #1a1a4d; }
+      }
+    </style>
+    <link rel="preload" as="image" href="/images/logo-lockup.jpg">
+<title>Codebridge</title>
+<meta name="description" content="Codebridge is a Kigali technology company offering cybersecurity, AI and machine learning, consultancy, internships, IKiraro Innovation Hub and IKiraro E-Learning.">
+<link rel="canonical" href="https://codebrige.rw/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Codebridge">
+<meta property="og:title" content="Codebridge">
+<meta property="og:description" content="Cybersecurity, AI, consultancy, internships and IKiraro education programmes from Kigali, Rwanda.">
+<meta property="og:image" content="https://codebrige.rw/images/logo.png">
+<meta property="og:url" content="https://codebrige.rw/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codebridge">
+<meta name="twitter:description" content="Technology and training from Kigali, Rwanda.">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png?v=round-1">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png?v=round-1">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=round-1">
+<link rel="icon" href="/favicon.ico?v=round-1" sizes="any">
+<link rel="stylesheet" href="style.css?v=nav-logo-1">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Codebridge","url":"https://codebrige.rw/","logo":"https://codebrige.rw/images/logo.png","email":"info@codebrige.rw","telephone":"+250788288546","address":{"@type":"PostalAddress","addressLocality":"Kigali","addressRegion":"Gasabo","postalCode":"26G9+6H9","addressCountry":"RW"}}
+</script>
+<style>
+/* =====================================================
+   HOMEPAGE — Hero only (navbar is in style.css)
+   ===================================================== */
+
+.home-hero-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #02080f;
+}
+.home-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+  display: block;
+  opacity: 0;
+  animation: hero-slideshow 20s infinite;
+}
+.home-hero-bg:nth-of-type(1) { animation-delay: 0s; }
+.home-hero-bg:nth-of-type(2) { animation-delay: 5s; }
+.home-hero-bg:nth-of-type(3) { animation-delay: 10s; }
+.home-hero-bg:nth-of-type(4) { animation-delay: 15s; }
+@keyframes hero-slideshow {
+  0%      { opacity: 0; transform: scale(1.06); }
+  4%      { opacity: 1; }
+  22%     { opacity: 1; transform: scale(1); }
+  28%     { opacity: 0; }
+  100%    { opacity: 0; }
+}
+.hero-slide-caption {
+  position: absolute;
+  left: 120px;
+  bottom: 30px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.hero-slide-caption .live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cb-red);
+  box-shadow: 0 0 0 0 rgba(238,58,47,0.6);
+  animation: live-dot-pulse 1.8s infinite;
+}
+@keyframes live-dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(238,58,47,0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(238,58,47,0); }
+  100% { box-shadow: 0 0 0 0 rgba(238,58,47,0); }
+}
+@media (max-width: 680px) {
+  .hero-slide-caption { left: 24px; bottom: 20px; }
+}
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg,
+    rgba(2,8,20,0.88) 0%,
+    rgba(2,10,28,0.78) 28%,
+    rgba(2,12,32,0.45) 52%,
+    rgba(2,12,32,0.10) 72%,
+    transparent 100%);
+}
+/* ── Hero entrance keyframes ── */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes hero-slide-left {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes hero-bg-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+
+
+
+.home-hero-content {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 150px 36px 100px 120px;
+  max-width: 640px;
+  color: var(--cb-white);
+}
+.home-hero-kicker {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.80);
+  font-weight: 600;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: hero-slide-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+.home-hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.12;
+  margin: 0 0 22px;
+  color: var(--cb-white);
+  opacity: 0;
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+}
+.home-hero-title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  color: red;
+  display: block;
+}
+.home-hero-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.80);
+  margin-bottom: 36px;
+  max-width: 400px;
+  opacity: 0;
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+}
+.home-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+}
+.home-btn-primary {
+  background: var(--cb-red);
+  color: var(--cb-white);
+  border: none;
+  border-radius: 999px;
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(238,58,47,0.35);
+}
+.home-btn-primary:hover { background: var(--cb-red-dark); transform: translateY(-1px); }
+.home-btn-secondary {
+  background: var(--cb-white);
+  color: var(--cb-navy);
+  border: none;
+  border-radius: 999px;
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.home-btn-secondary:hover { background: #eef0fa; transform: translateY(-1px); }
+.hero-ai-btn {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  z-index: 10;
+  width: 90px;
+  height: 90px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.3s forwards,
+             ai-pulse 3s ease-in-out 2s infinite;
+}
+
+.hero-ai-icon {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: cover;
+}
+.hero-ai-btn:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(0,0,0,0.30); }
+
+.hero-ai-btn:hover svg { transform: rotate(20deg) scale(1.1); }
+.hero-ai-btn svg { transition: transform 0.3s ease; }
+@keyframes ai-pulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(0,0,0,0.22), 0 0 0 0 rgba(255,255,255,0.4); }
+  50%      { box-shadow: 0 6px 24px rgba(0,0,0,0.22), 0 0 0 10px rgba(255,255,255,0); }
+}
+@media (max-width: 680px) {
+  .home-hero-title { font-size: 34px; }
+  .home-hero-content { padding: 120px 24px 60px 40px; max-width: 100%; }
+  .home-hero-wrap { min-height: 90vh; }
+  .hero-ai-btn { bottom: 24px; right: 20px; width: 50px; height: 50px; }
+}
+/* ===== AI Chat Widget ===== */
+.ai-chat-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,8,20,0.35);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.ai-chat-overlay.active { opacity: 1; visibility: visible; }
+
+.ai-chat-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 560px;
+  max-height: calc(100vh - 48px);
+  background: var(--cb-white);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.28);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
+}
+.ai-chat-panel.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.ai-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--cb-navy);
+  color: var(--cb-white);
+  flex-shrink: 0;
+}
+.ai-chat-header-info { display: flex; align-items: center; gap: 12px; }
+.ai-chat-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ai-chat-title { font-size: 14px; font-weight: 700; }
+.ai-chat-status { font-size: 11px; color: rgba(255,255,255,0.7); }
+.ai-chat-status::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  margin-right: 5px;
+}
+.ai-chat-close {
+  background: none; border: none; color: var(--cb-white);
+  font-size: 24px; line-height: 1; cursor: pointer;
+  opacity: 0.8; transition: opacity 0.2s;
+  padding: 0 4px;
+}
+.ai-chat-close:hover { opacity: 1; }
+
+.ai-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f7f8fb;
+}
+.ai-msg { display: flex; }
+.ai-msg--user { justify-content: flex-end; }
+.ai-msg--bot { justify-content: flex-start; }
+.ai-msg-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.ai-msg--bot .ai-msg-bubble {
+  background: var(--cb-white);
+  color: #1a1a2e;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.ai-msg--user .ai-msg-bubble {
+  background: var(--cb-navy);
+  color: var(--cb-white);
+  border-bottom-right-radius: 4px;
+}
+.ai-msg--typing .ai-msg-bubble { display: flex; gap: 4px; align-items: center; padding: 12px 14px; }
+.ai-typing-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #b2bec3;
+  animation: ai-typing-bounce 1.2s infinite ease-in-out;
+}
+.ai-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.ai-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ai-typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.ai-chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid #eceef2;
+  background: var(--cb-white);
+  flex-shrink: 0;
+}
+.ai-chat-input {
+  flex: 1;
+  border: 1px solid #dfe3ea;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ai-chat-input:focus { border-color: var(--cb-navy); }
+.ai-chat-send {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--cb-navy);
+  color: var(--cb-white);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+.ai-chat-send:hover { background: var(--cb-navy-dark); transform: scale(1.05); }
+.ai-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  .ai-chat-panel {
+    right: 8px; left: 8px; bottom: 8px;
+    width: auto; height: calc(100vh - 80px);
+  }
+}
+</style>
+<link rel="stylesheet" href="cb-final.css?v=nav-logo-1">
+</head>
+<body class="home-page">
+        <div id="cb-preloader" role="status" aria-live="polite" aria-busy="true" aria-label="Loading Codebridge">
+      <div class="cb-preloader-brand">
+        <img src="/images/logo-lockup.jpg" width="900" height="681" alt="Codebridge Fire Tech Solutions" fetchpriority="high" decoding="sync">
+        <span class="cb-preloader-ring" aria-hidden="true"></span>
+      </div>
+    </div>
+    <noscript>
+      <style>
+        html.cb-loading, html.cb-loading body { overflow: auto !important; }
+        #cb-preloader { display: none !important; }
+      </style>
+    </noscript>
+    <script>
+      (function () {
+        var overlay = document.getElementById("cb-preloader");
+        if (!overlay) return;
+        var done = false;
+        function hide() {
+          if (done) return;
+          done = true;
+          document.documentElement.classList.remove("cb-loading");
+          overlay.classList.add("is-done");
+          overlay.setAttribute("aria-busy", "false");
+          window.setTimeout(function () {
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+          }, 380);
+        }
+        if (document.readyState === "complete") {
+          hide();
+        } else {
+          window.addEventListener("load", hide);
+        }
+      })();
+    </script>
+
+
+
+<!-- ========================================================
+     HERO SECTION — full-bleed with navbar inside
+     ======================================================== -->
+<div class="home-hero-wrap">
+
+  <!-- Background slideshow — cycles through highlights from our latest gallery event -->
+  <img class="home-hero-bg" src="images/u2.svg" alt="Code Summit '24 highlight" aria-hidden="true">
+  <img class="home-hero-bg" src="images/handsb.png" alt="Latest event highlight" aria-hidden="true">
+  <img class="home-hero-bg" src="images/globeb.png" alt="Latest event highlight" aria-hidden="true">
+  <img class="home-hero-bg" src="images/person.png" alt="Latest event highlight" aria-hidden="true">
+
+  <!-- Left gradient overlay for text legibility -->
+  <div class="home-hero-overlay" aria-hidden="true"></div>
+
+  <a href="gallery.html" class="hero-slide-caption">
+    <span class="live-dot" aria-hidden="true"></span>
+    <span data-i18n="hero.caption">Live from our latest event &mdash; Code Summit '24</span>
+  </a>
+
+  <!-- BEGIN: partial Header (nav) -->
+ <nav class="site-nav" aria-label="Main navigation">
+  <div class="site-nav-pill">
+    <a href="index.html" class="site-nav-logo" aria-label="Codebridge home">
+      <img src="images/logo.png" alt="Codebridge logo" />
+    </a>
+    <div class="site-nav-links">
+      <a href="index.html" class="nav-item-link active" data-i18n="nav.home">Home</a>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="about.html" class="nav-item-link" data-i18n="nav.about">About us</a>
+          <button class="nav-item-caret" aria-label="Toggle About us submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="about.html#mission-vision" data-i18n="nav.about.mission">Mission &amp; vision</a>
+          <a href="about.html#journey" data-i18n="nav.about.journey">Our journey</a>
+          <a href="about.html#team" data-i18n="nav.about.team">Our team</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="services.html" class="nav-item-link " data-i18n="nav.services">Services</a>
+          <button class="nav-item-caret" aria-label="Toggle Services submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="services.html#cybersecurity" data-i18n="nav.services.cyber">Cybersecurity</a>
+          <a href="services.html#ai-ml" data-i18n="nav.services.ai">AI &amp; Machine Learning</a>
+          <a href="services.html#consultancy" data-i18n="nav.services.consultancy">Consultancy &amp; Strategy</a>
+          <a href="services.html#internship" data-i18n="nav.services.internship">Internship Program</a>
+          <a href="services.html#ikiraro-hub" data-i18n="nav.services.ikiraroHub">IKiraro Innovation Hub</a>
+          <a href="https://ikiraro-elearrning.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="nav.services.ikiraroElearning">IKiraro E-Learning</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="careers.html" class="nav-item-link" data-i18n="nav.careers">Careers</a>
+          <button class="nav-item-caret" aria-label="Toggle Careers submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="careers.html#job-opportunities" data-i18n="nav.careers.jobs">Job opportunities</a>
+          <a href="careers.html#internships" data-i18n="nav.careers.internships">Internship programs</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-row">
+          <a href="innovations.html" class="nav-item-link" data-i18n="nav.innovations">Innovations</a>
+          <button class="nav-item-caret" aria-label="Toggle Innovations submenu" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="nav-dropdown">
+          <a href="innovations.html#technical-reels" data-i18n="nav.innovations.reels">Technical reels</a>
+          <a href="innovations.html#innovation-in-action" data-i18n="nav.innovations.action">Innovation in action</a>
+          <a href="innovations.html#featured-projects" data-i18n="nav.innovations.projects">Featured projects</a>
+        </div>
+      </div>
+      <a href="/news" data-i18n="nav.blog">News</a>
+      <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+    </div>
+    <div class="site-nav-lang-wrap">
+      <button class="site-nav-lang" aria-label="Language: English" aria-expanded="false">EN</button>
+      <div class="site-nav-lang-menu" role="menu">
+        <button class="site-nav-lang-option active" data-value="EN" data-label="English" role="menuitem">English</button>
+        <button class="site-nav-lang-option" data-value="FR" data-label="Français" role="menuitem">Français</button>
+        <button class="site-nav-lang-option" data-value="KINY" data-label="Kinyarwanda" role="menuitem">Kinyarwanda</button>
+      </div>
+    </div>
+    <button class="site-nav-toggle" aria-label="Open menu">☰</button>
+  </div>
+  <a href="contact.html" class="site-nav-contact" data-i18n="nav.contact">Contact us</a>
+</nav>
+  <!-- END: partial Header -->
+
+  <!-- Hero copy -->
+  <div class="home-hero-content">
+
+    <h1 class="home-hero-title">
+      <span data-i18n="hero.title_line1">Bridge the ideas into</span>
+      <em data-i18n="hero.title_line2">digital reality</em>
+    </h1>
+    <p class="home-hero-desc" data-i18n="hero.desc">
+      Transform complex problems into elegant software solutions.
+      We specialize in web development, AI/ML, and cybersecurity, cloud infrastructure, and digital transformation, delivering innovative solutions that ignite your business growth.
+    </p>
+    <div class="home-hero-actions">
+      <a href="services.html" class="home-btn-primary" data-i18n="hero.btn_primary">Our services</a>
+      <a href="about.html" class="home-btn-secondary" data-i18n="hero.btn_secondary">Learn more</a>
+    </div>
+  </div>
+
+<button class="hero-ai-btn" aria-label="AI assistant" type="button">
+  <img
+    src="chat.png"
+    alt="AI assistant"
+    class="hero-ai-icon"
+  />
+</button>
+
+
+</div>
+<!-- /hero wrap -->
+
+<main class="container">
+
+  <!-- WHO WE ARE — 1) main description, in clear reading order -->
+  <section class="about-teaser" id="who-we-are" style="margin-top:50px;" data-aos="fade-up">
+    <div class="about-teaser-copy">
+      <div class="section-eyebrow" style="text-align:left;" data-i18n="about_teaser.eyebrow">Who we are</div>
+      <h2 class="fp-heading" style="font-size:34px;"><span data-i18n="about_teaser.title_pre">Bridging Rwanda's</span> <span class="accent" data-i18n="about_teaser.title_accent">digital future</span></h2>
+      <p data-i18n="about_teaser.desc">Codebridge is a tech and software company in Rwanda committed to enhancing and improving the competitiveness of our clients by enabling them to succeed through the power of information technology and security. Nine years of experience, one mission &mdash; bridge the gap between complex technology and real business needs.</p>
+      <a href="about.html" class="btn btn-navy" data-i18n="about_teaser.btn">Learn more about us &rarr;</a>
+    </div>
+    <div class="about-teaser-stats">
+      <div class="about-teaser-stat">
+        <div class="stat-num">9+</div>
+        <div class="stat-label" data-i18n="about_teaser.stat1">Years of experience</div>
+      </div>
+      <div class="about-teaser-stat">
+        <div class="stat-num">300+</div>
+        <div class="stat-label" data-i18n="about_teaser.stat2">Businesses powered</div>
+      </div>
+      <div class="about-teaser-stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label" data-i18n="about_teaser.stat3">Enterprise clients</div>
+      </div>
+      <div class="about-teaser-stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label" data-i18n="about_teaser.stat4">Markets served</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE — 2) about video, right after the description -->
+  <section class="video-banner" data-aos="fade-up">
+    <h2><span data-i18n="landing.video_title_pre">Know more about</span> <em class="accent" style="color:#ee3a2f;" data-i18n="landing.video_title_accent">Codebridge</em></h2>
+    <div class="video-frame" data-video="images/visit.mp4">
+      <img src="images/handsb.png" alt="" class="vp-poster">
+      <button class="play-btn" aria-label="Play video">&#9654;</button>
+    </div>
+  </section>
+
+  <section class="cb-mvv" data-aos="fade-up">
+    <div class="section-title">Mission, vision &amp; <span class="accent">values</span></div>
+    <p class="section-subtitle">How we build, who we serve, and the standard we hold on every delivery.</p>
+    <div class="cb-mvv-grid">
+      <article class="cb-mvv-card cb-mvv-card--mission">
+        <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+        <h4 data-i18n="mvv.mission_kicker">Mission</h4>
+        <h3 data-i18n="mvv.mission_title">Build what organisations can actually run</h3>
+        <p data-i18n="mvv.mission_body">We combine engineering, research and creative thinking to turn ambitious ideas into scalable digital products for business, HR and government partners.</p>
+      </article>
+      <article class="cb-mvv-card cb-mvv-card--vision">
+        <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4 data-i18n="mvv.vision_kicker">Vision</h4>
+        <h3 data-i18n="mvv.vision_title">Rwanda’s trusted technology partner</h3>
+        <p data-i18n="mvv.vision_body">To be Rwanda's most trusted technology partner, bridging global best practice with local expertise.</p>
+      </article>
+      <article class="cb-mvv-card cb-mvv-card--values">
+        <div class="cb-mvv-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.26L22 9.27l-5 4.88 1.18 6.88L12 17.77l-6.18 3.26L7 14.15 2 9.27l7.1-1.01L12 2z"/></svg></div>
+        <h4 data-i18n="mvv.values_kicker">Values</h4>
+        <h3 data-i18n="mvv.values_title">Integrity in every delivery</h3>
+        <p data-i18n="mvv.values_body">Integrity, craftsmanship and continuous learning guide every project we deliver.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEATURED SERVICES — static responsive cards -->
+  <section class="all-services-section" id="servicesSection">
+    <div class="section-title" data-aos="fade-up"><span data-i18n="services.title_pre">Our</span> <span class="accent" data-i18n="services.title_accent">services</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="services.sub">Comprehensive digital solutions and safety services to transform your business</p>
+
+    <div class="featured-services-viewport" id="featuredServices">
+    <div class="services-grid" id="featuredServicesTrack">
+      <a href="services.html#cybersecurity" class="svc-slide" data-aos="fade-up">
+        <div class="svc-slide-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4 data-i18n="svc.cyber_title">Cybersecurity</h4>
+        <p data-i18n="svc.cyber_desc">Protect systems, people and data with practical security services and awareness.</p>
+        <span class="svc-slide-link" data-i18n="svc.read_more">Read more →</span>
+      </a>
+      <a href="services.html#ai-ml" class="svc-slide" data-aos="fade-up" data-aos-delay="80">
+        <div class="svc-slide-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <h4 data-i18n="svc.ai_title">AI &amp; Machine Learning</h4>
+        <p data-i18n="svc.ai_desc">Turn data into useful products — models, automation and applied AI for real operations.</p>
+        <span class="svc-slide-link" data-i18n="svc.read_more">Read more →</span>
+      </a>
+      <a href="services.html#consultancy" class="svc-slide" data-aos="fade-up" data-aos-delay="160">
+        <div class="svc-slide-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16"/><rect x="6" y="4" width="12" height="12" rx="2"/><path d="M9 8h6M9 12h4"/></svg></div>
+        <h4 data-i18n="svc.consult_title">Consultancy &amp; Strategy</h4>
+        <p data-i18n="svc.consult_desc">Clear technology strategy so digital investments match how your organisation actually works.</p>
+        <span class="svc-slide-link" data-i18n="svc.read_more">Read more →</span>
+      </a>
+      <a href="services.html#internship" class="svc-slide" data-aos="fade-up">
+        <div class="svc-slide-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4 data-i18n="svc.intern_title">Internship Program</h4>
+        <p data-i18n="svc.intern_desc">Practical ICT internships for TVET and university students, with mentorship and real projects.</p>
+        <span class="svc-slide-link" data-i18n="svc.read_more">Read more →</span>
+      </a>
+      <a href="services.html#ikiraro-hub" class="svc-slide" data-aos="fade-up" data-aos-delay="80">
+        <div class="svc-slide-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 8l10 6 10-6-10-6z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <h4 data-i18n="svc.hub_title">IKiraro Innovation Hub</h4>
+        <p data-i18n="svc.hub_desc">Hands-on tech training for learners aged 8–15+ in schools: robotics, coding, cyber, web, mobile and AI.</p>
+        <span class="svc-slide-link" data-i18n="svc.read_more">Read more →</span>
+      </a>
+      <a href="https://ikiraro-elearrning.vercel.app/" target="_blank" rel="noopener noreferrer" class="svc-slide" data-aos="fade-up" data-aos-delay="160" aria-label="Open IKiraro E-Learning platform in a new tab">
+        <div class="svc-slide-icon svc-slide-icon--brand"><img src="images/ikiraro-elearning.png" alt="" width="48" height="48"></div>
+        <h4 data-i18n="svc.learn_title">IKiraro E-Learning Platform</h4>
+        <p data-i18n="svc.learn_desc">Interactive courses, projects, mentorship, certifications and innovation challenges — opens in a new tab.</p>
+        <span class="svc-slide-link" data-i18n="svc.visit_platform">Open IKiraro E-Learning →</span>
+      </a>
+    </div>
+    <div class="svc-carousel-arrows">
+      <button type="button" class="svc-arrow" id="featPrev" aria-label="Previous services">&#8592;</button>
+      <button type="button" class="svc-arrow" id="featNext" aria-label="Next services">&#8594;</button>
+    </div>
+    </div>
+  </section>
+
+    <!-- PARTNERS — static identified grid, official URLs -->
+  <section class="cb-partners" id="partners">
+    <div class="section-title" data-aos="fade-up"><span data-i18n="landing.partners_title_pre">Trusted</span> <span class="accent" data-i18n="landing.partners_title_accent">partners</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="landing.partners_sub">Working with leading institutions that drive digital transformation across Rwanda and Africa.</p>
+    <div class="cb-partners-grid">
+      <a class="cb-partner-card" href="https://coregroup.rw/" target="_blank" rel="noopener noreferrer" aria-label="Core Group website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/coregroup.png" alt="Core Group"></div>
+        <span class="cb-partner-name">Core Group</span>
+      </a>
+      <a class="cb-partner-card" href="https://loxotech.com/#home" target="_blank" rel="noopener noreferrer" aria-label="Loxotech website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/loxotech.png" alt="Loxotech"></div>
+        <span class="cb-partner-name">Loxotech</span>
+      </a>
+      <a class="cb-partner-card" href="https://leplaisirdenfant.com/" target="_blank" rel="noopener noreferrer" aria-label="Le Plaisir d’Enfant School website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/leplaisir.jpg" alt="Le Plaisir d’Enfant School"></div>
+        <span class="cb-partner-name">Le Plaisir d’Enfant School</span>
+      </a>
+      <a class="cb-partner-card" href="https://saintemanuelschool.com/" target="_blank" rel="noopener noreferrer" aria-label="Saint Emmanuel School Complex website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/saintemmanuel.png" alt="Saint Emmanuel School Complex"></div>
+        <span class="cb-partner-name">Saint Emmanuel School Complex</span>
+      </a>
+      <a class="cb-partner-card" href="https://www.codiblegroup.com/" target="_blank" rel="noopener noreferrer" aria-label="Codible Group website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/codible.png" alt="Codible Group"></div>
+        <span class="cb-partner-name">Codible Group</span>
+      </a>
+      <a class="cb-partner-card" href="https://kasschool.wordpress.com/" target="_blank" rel="noopener noreferrer" aria-label="Karenge Adventist Secondary School website (opens in a new tab)">
+        <div class="cb-partner-logo"><img src="images/partners/karenge.png" alt="Karenge Adventist Secondary School"></div>
+        <span class="cb-partner-name">Karenge Adventist Secondary School</span>
+      </a>
+      <a class="cb-partner-card" href="services.html#ikiraro-hub" aria-label="IKiraro Innovation Hub, a Codebridge service">
+        <div class="cb-partner-logo"><img src="images/logo.png" alt="IKiraro Innovation Hub / Codebridge"></div>
+        <span class="cb-partner-name">IKiraro Innovation Hub</span>
+      </a>
+    </div>
+  </section>
+
+<!-- INNOVATIONS — preview, calls the Innovations page onto the landing page -->
+  <section>
+    <div class="section-title" data-aos="fade-up"><span data-i18n="landing.innov_title_pre">Our</span> <span class="accent" data-i18n="landing.innov_title_accent">innovations</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="landing.innov_sub">Innovation isn't just words at Codebridge &mdash; it's action, research and technical craft turned into real products.</p>
+    <div class="innov-preview-grid">
+      <div class="innov-preview-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="innov-preview-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
+        <h4 data-i18n="innov.card1_title">Technical reels</h4>
+        <p data-i18n="innov.card1_desc">Behind-the-scenes series on the systems, data flows and UX craft that power our products.</p>
+      </div>
+      <div class="innov-preview-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="innov-preview-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h4 data-i18n="innov.card2_title">Innovation in action</h4>
+        <p data-i18n="innov.card2_desc">We work hand-in-hand with partners to turn transformative ideas into cutting-edge, deployed technology.</p>
+      </div>
+      <div class="innov-preview-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="innov-preview-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h4 data-i18n="innov.card3_title">Cyberlympics training system</h4>
+        <p data-i18n="innov.card3_desc">The competitive cybersecurity training platform that powered Rwanda's inaugural Cyberlympics.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin:-50px 0 90px;">
+      <a href="innovations.html" class="btn btn-navy" data-i18n="innov.explore_btn">Explore innovations &rarr;</a>
+    </div>
+  </section>
+
+  <!-- OUR PROJECTS — 3×2 cards -->
+  <section class="cb-projects" id="projects">
+    <div class="section-title" data-aos="fade-up"><span data-i18n="fp.projects_title_pre">Our</span> <span class="accent" data-i18n="fp.projects_title_accent">projects</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="fp.projects_sub">Selected work across web, mobile, AI and cybersecurity.</p>
+    <div class="cb-projects-grid">
+      <article class="cb-project-card" data-aos="fade-up">
+        <div class="cb-project-img"><img src="images/globeb.png" alt="School Management System" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p1_type">Web App</span>
+          <h3 data-i18n="proj.p1_title">School Management System</h3>
+          <p data-i18n="proj.p1_desc">Enrolment, grading, attendance and parent communication in one school admin platform.</p>
+          <a href="contact.html" class="cb-project-link" data-i18n="fp.view">Read more →</a>
+        </div>
+      </article>
+      <article class="cb-project-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="cb-project-img"><img src="images/person.png" alt="HR Portal" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p2_type">Web App</span>
+          <h3 data-i18n="proj.p2_title">HR Portal</h3>
+          <p data-i18n="proj.p2_desc">Leave, payroll, reviews and employee self-service for organisations that need a single HR workspace.</p>
+          <a href="contact.html" class="cb-project-link" data-i18n="fp.view">Read more →</a>
+        </div>
+      </article>
+      <article class="cb-project-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="cb-project-img"><img src="images/handsb.png" alt="Food Delivery App" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p3_type">Mobile App</span>
+          <h3 data-i18n="proj.p3_title">Food Delivery App</h3>
+          <p data-i18n="proj.p3_desc">Ordering, tracking and payments for iOS and Android, designed around local compliance needs.</p>
+          <a href="contact.html" class="cb-project-link" data-i18n="fp.view">Read more →</a>
+        </div>
+      </article>
+      <article class="cb-project-card" data-aos="fade-up">
+        <div class="cb-project-img"><img src="images/handsb.png" alt="Crop Disease Detector" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p4_type">AI project</span>
+          <h3 data-i18n="proj.p4_title">Crop Disease Detector</h3>
+          <p data-i18n="proj.p4_desc">Vision model that flags crop disease from photos so farmers can act before harvest losses grow.</p>
+          <a href="contact.html" class="cb-project-link" data-i18n="fp.view">Read more →</a>
+        </div>
+      </article>
+      <article class="cb-project-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="cb-project-img"><img src="images/globeb.png" alt="Cyberlympics training system" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p5_type">Cybersecurity project</span>
+          <h3 data-i18n="proj.p5_title">Cyberlympics training system</h3>
+          <p data-i18n="proj.p5_desc">Competitive cybersecurity labs and coaching used in Rwanda’s inaugural Cyberlympics.</p>
+          <a href="innovations.html#featured-projects" class="cb-project-link" data-i18n="fp.view">Read more →</a>
+        </div>
+      </article>
+      <article class="cb-project-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="cb-project-img cb-project-img--logo"><img src="images/ikiraro-elearning.png" alt="IKiraro E-Learning logo" loading="lazy"></div>
+        <div class="cb-project-body">
+          <span class="cb-project-type" data-i18n="proj.p6_type">ICT solution</span>
+          <h3 data-i18n="proj.p6_title">IKiraro E-Learning</h3>
+          <p data-i18n="proj.p6_desc">A living learning platform for programming, robotics, AI and related digital skills.</p>
+          <a href="https://ikiraro-elearrning.vercel.app/" target="_blank" rel="noopener noreferrer" class="cb-project-link" data-i18n="svc.visit_platform">Open IKiraro E-Learning →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+ 
+      <!-- Newsletter / Stay ahead -->
+    <section class="newsletter-section">
+  <div data-aos="zoom-in">
+<h2>
+  <span data-i18n="landing.newsletter_title_white">Stay ahead</span>
+  <span data-i18n="landing.newsletter_title_red" style="color: var(--cb-red);">of the bridge.</span>
+</h2>
+    <p class="sub" data-i18n="landing.newsletter_sub">
+      Receive and be always updated about all of our projects and upcoming events.
+    </p>
+    <p class="sub2" data-i18n="landing.newsletter_notify">Notify me in your professional inbox</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input
+        type="email"
+        id="newsletterEmail"
+        placeholder="professional@email.com"
+        data-i18n-placeholder="landing.newsletter_placeholder"
+        aria-label="Email address"
+        required
+      />
+      <button type="submit" id="newsletterBtn" data-i18n="landing.newsletter_btn">Subscribe</button>
+    </form>
+    <p id="newsletterFeedback" class="form-feedback"></p>
+  </div>
+</section>
+
+<!-- SUCCESSFUL STORIES — three quote cards -->
+  <section class="cb-stories" id="success-stories">
+    <div class="section-title" data-aos="fade-up"><span data-i18n="stories.kicker">Successful</span> <span class="accent" data-i18n="stories.heading_accent">stories</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="80" data-i18n="stories.heading">Hear what learners, teachers and interns are saying about Codebridge programmes.</p>
+    <div class="cb-story-grid">
+      <article class="cb-story-card" data-aos="fade-up">
+        <span class="cb-story-mark" aria-hidden="true">“</span>
+        <p class="cb-story-tag" data-i18n="stories.s1_tag">Built real projects</p>
+        <blockquote data-i18n="stories.s1_quote">IKiraro is where I stopped only watching lessons and started building things I can actually show.</blockquote>
+        <div class="cb-story-person">
+          <img class="cb-story-avatar" src="images/p.png" alt="Aline Uwase">
+          <div>
+            <div class="cb-story-name" data-i18n="stories.s1_name">Aline Uwase</div>
+            <div class="cb-story-role" data-i18n="stories.s1_role">Learner, IKiraro E-Learning</div>
+          </div>
+        </div>
+      </article>
+      <article class="cb-story-card" data-aos="fade-up" data-aos-delay="80">
+        <span class="cb-story-mark" aria-hidden="true">“</span>
+        <p class="cb-story-tag" data-i18n="stories.s2_tag">Students keep practising</p>
+        <blockquote data-i18n="stories.s2_quote">After Hub sessions, our students keep practising on IKiraro instead of waiting for the next workshop.</blockquote>
+        <div class="cb-story-person">
+          <img class="cb-story-avatar" src="images/person.png" alt="Jean-Paul Habimana">
+          <div>
+            <div class="cb-story-name" data-i18n="stories.s2_name">Jean-Paul Habimana</div>
+            <div class="cb-story-role" data-i18n="stories.s2_role">ICT teacher, partner school</div>
+          </div>
+        </div>
+      </article>
+      <article class="cb-story-card" data-aos="fade-up" data-aos-delay="140">
+        <span class="cb-story-mark" aria-hidden="true">“</span>
+        <p class="cb-story-tag" data-i18n="stories.s3_tag">Skills that transfer</p>
+        <blockquote data-i18n="stories.s3_quote">The internship felt like real delivery — I left with skills I use, not just a certificate.</blockquote>
+        <div class="cb-story-person">
+          <img class="cb-story-avatar" src="images/p.png" alt="Keza Ingabire">
+          <div>
+            <div class="cb-story-name" data-i18n="stories.s3_name">Keza Ingabire</div>
+            <div class="cb-story-role" data-i18n="stories.s3_role">ICT intern, Codebridge</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<!-- COMPANY NEWS / BLOG — sliding carousel, trending highlight on the latest story -->
+  <section>
+    <div class="section-title" data-aos="fade-up"><span data-i18n="landing.blog_title_pre">Explore Our</span> <span class="accent" data-i18n="landing.blog_title_accent">Articles</span></div>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="landing.blog_sub">Rwandan youth have emerged victorious in the inaugural national Cyberlympics, a competition that is designed to encourage and elevate cybersecurity&hellip;</p>
+
+    <div class="news-carousel-wrap">
+      <div class="news-carousel" id="newsCarousel">
+        <article class="news-card news-card--hot" data-aos="fade-up" data-aos-delay="0">
+          <div class="news-card-img">
+            <span class="trending-badge" data-i18n="cta.trending_now">Trending now</span>
+            <img src="images/handsb.png" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">Friday, June 12 2026</div>
+            <h3 class="news-title" data-i18n="blog.card_title">The Future of Coding in 2025</h3>
+            <p class="news-excerpt" data-i18n="blog.card_excerpt">Exploring emerging technologies, frameworks, and best practices.</p>
+            <a href="/news" class="read-more" data-i18n="cta.explore_more">Explore more <span>&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="news-card-img">
+            <img src="images/person.png" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">Friday, June 12 2026</div>
+            <h3 class="news-title">Inside Rwanda's first national Cyberlympics</h3>
+            <p class="news-excerpt">How the Cyberlympics training platform we built helped Rwandan youth take the top spot in the country's first cybersecurity competition.</p>
+            <a href="/news" class="read-more">Read news <span>&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="news-card-img">
+            <img src="images/globeb.png" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">Tuesday, May 19 2026</div>
+            <h3 class="news-title">Bringing AI into the classroom with IKiraro</h3>
+            <p class="news-excerpt">A look inside our Innovation Hub programme, where learners aged 8-15 get hands-on with robotics, coding and their first AI projects.</p>
+            <a href="/news" class="read-more">Read news <span>&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="news-card-img">
+            <img src="images/qt.png" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">Thursday, April 23 2026</div>
+            <h3 class="news-title">Why fire safety compliance is a tech problem now</h3>
+            <p class="news-excerpt">How AI-powered smoke and heat detection is changing incident response for businesses across Kigali.</p>
+            <a href="/news" class="read-more">Read news <span>&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="news-card-img">
+            <img src="images/rdb.png" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">Monday, March 9 2026</div>
+            <h3 class="news-title">Integrating with Irembo, RSSB and RURA — what we learned</h3>
+            <p class="news-excerpt">Notes from the field on connecting client systems to Rwanda's e-government platforms without disrupting daily operations.</p>
+            <a href="/news" class="read-more">Read news <span>&rarr;</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" >
+    <div data-aos="zoom-in">
+      <h2><span data-i18n="cta_banner.title_pre">Ready to get the</span> <span class="accent" style="color:#ffffff;" data-i18n="cta_banner.title_accent">best</span> <span data-i18n="cta_banner.title_post">experience</span></h2>
+      <a href="contact.html" class="btn btn-light" data-i18n="cta_banner.btn">Get in touch</a>
+    </div>
+  </section>
+
+  </main>
+
+<!-- BEGIN: partial Footer -->
+<footer class="site-footer">
+  <div class="footer-map-bg" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <div class="footer-col footer-col--brand">
+      <div class="footer-logo"><img src="images/logow.png" alt="Codebridge"></div>
+      <p class="footer-tagline" data-i18n="footer.tagline">We develop, secure, and deploy cutting-edge digital solutions.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="YouTube">&#9654;</a>
+      </div>
+    </div>
+    <div class="footer-col footer-col--links">
+      <div class="footer-heading" data-i18n="footer.quicklink">Quick Link</div>
+      <ul>
+        <li><a href="about.html"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.about">About us</span></a></li>
+        <li><a href="services.html"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.services">Services</span></a></li>
+        <li><a href="innovations.html"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.innovations">Innovations</span></a></li>
+        <li><a href="/news"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.blog">News</span></a></li>
+        <li><a href="careers.html"><span class="footer-chevron" aria-hidden="true">&raquo;</span><span data-i18n="nav.careers">Careers</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-col--contact">
+      <div class="footer-heading" data-i18n="footer.contact_us">Contact Us</div>
+      <div class="footer-info-row">
+        <span class="footer-info-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <span data-i18n="footer.address">Kigali &mdash; Gasabo, Kabuga (Rusoro), 26G9+6H9</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="footer-info-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </span>
+        <div>
+          <strong data-i18n="footer.hours_label">Opening Hours:</strong>
+          <span data-i18n="footer.hours">Mon&ndash;Fri: 8:00 AM &ndash; 5:00 PM, Sat &amp; Sun: 12:00 PM &ndash; 5:00 PM</span>
+        </div>
+      </div>
+      <div class="footer-info-row">
+        <span class="footer-info-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <div>
+          <strong data-i18n="footer.phone_label">Phone Call:</strong>
+          <span>+250 788 288 546</span>
+        </div>
+      </div>
+      <div class="footer-info-row">
+        <span class="footer-info-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6 9-6"/></svg>
+        </span>
+        <div>
+          <strong data-i18n="footer.email_label">Email:</strong>
+          <span>info@codebrige.rw</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col footer-col--map">
+      <div class="footer-heading" data-i18n="footer.find_us">Find Us</div>
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m3!2m1!1sLight+Church+Kabuga,26G9%2B6H9,Kabuga!6i16" title="Codebridge HQ location map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" aria-label="Map showing Codebridge HQ in Kabuga (Rusoro), Kigali"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p class="footer-copyright" data-i18n="footer.copyright">&copy; All rights reserved 2026 by Codebridge.</p>
+      <a href="privacy-policy.html" class="footer-privacy-link" data-i18n="footer.privacy_policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+<!-- END: partial Footer -->
+
+<script>
+/* ============================================================
+   Load real posts from the admin dashboard, if any exist yet.
+   Falls back to the static demo cards already in the carousel.
+   ============================================================ */
+(function () {
+  const track = document.getElementById('newsCarousel');
+  if (!track) return;
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  fetch('/news-api.php?limit=8')
+    .then((res) => res.json())
+    .then((data) => {
+      if (!data.success || !data.posts.length) return;
+      track.innerHTML = data.posts.map((post, i) => `
+        <article class="news-card${i === 0 ? ' news-card--hot' : ''}">
+          <div class="news-card-img">
+            ${i === 0 ? `<span class="trending-badge">${escapeHtml(post.badge || 'Latest')}</span>` : ''}
+            <img src="${post.image ? escapeHtml(post.image) : 'images/handsb.png'}" alt="">
+          </div>
+          <div class="news-card-body">
+            <div class="news-date">${escapeHtml(post.date)}</div>
+            <h3 class="news-title">${escapeHtml(post.title)}</h3>
+            <p class="news-excerpt">${escapeHtml(post.excerpt)}</p>
+            <a href="${escapeHtml(post.url || '/news')}" class="read-more">Read article <span>&rarr;</span></a>
+          </div>
+        </article>
+      `).join('');
+    })
+    .catch(() => { /* keep static fallback cards until TYPO3 news is published */ });
+})();
+</script>
+<script>
+/* ============================================================
+   "Know more about Codebridge" video — click poster to play
+   ============================================================ */
+document.querySelectorAll(".video-frame").forEach((frame) => {
+  frame.addEventListener("click", () => {
+    const videoSrc = frame.dataset.video;
+    if (!videoSrc) return;
+    const video = document.createElement("video");
+    video.src = videoSrc;
+    video.controls = true;
+    video.autoplay = true;
+    video.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:10;";
+    frame.innerHTML = "";
+    frame.appendChild(video);
+  });
+});
+</script>
+<script>
+/* ============================================================
+   Stats — count up from 0 when scrolled into view
+   ============================================================ */
+(function () {
+  const statEls = document.querySelectorAll('.stat-num');
+  if (!statEls.length) return;
+
+  const stats = Array.from(statEls).map((el) => {
+    const text = el.textContent.trim();
+    const match = text.match(/^(\d+)(.*)$/);
+    return { el, target: match ? parseInt(match[1], 10) : 0, suffix: match ? match[2] : '' };
+  });
+
+  function animateStats() {
+    stats.forEach(({ el, target, suffix }) => {
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  const statsContainer = document.querySelector('.about-teaser-stats');
+  if (!statsContainer) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateStats();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(statsContainer);
+  } else {
+    animateStats();
+  }
+})();
+</script>
+ <script src="i18n-extra.js?v=db-ai-1"></script>
+<script src="i18n.js"></script>
+<script src="lang-switcher.js"></script>
+<script src="cb-enhancements.js?v=preloader-1"></script>
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true });
+  </script>
+   <script>
+      // Video Players Trigger
+      document.querySelectorAll(".reel-thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          const videoSrc = thumb.dataset.video;
+          if (!videoSrc) return;
+          const video = document.createElement("video");
+          video.src = videoSrc;
+          video.controls = true;
+          video.autoplay = true;
+          video.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;";
+          thumb.innerHTML = "";
+          thumb.appendChild(video);
+        });
+      });
+
+      document.querySelectorAll('.video-preview').forEach(preview => {
+        preview.addEventListener('click', () => {
+          const videoSrc = preview.dataset.video;
+          if (!videoSrc) return;
+          const video = document.createElement('video');
+          video.src = videoSrc;
+          video.controls = true;
+          video.autoplay = true;
+          video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+          preview.innerHTML = '';
+          preview.appendChild(video);
+        });
+      });
+
+      // Category Filter Functionality
+      function filterCategory(cat) {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('#projectsGrid .proj-card');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        cards.forEach(card => {
+          if (cat === 'all' || card.dataset.category === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      // Modal Functions
+      function openProjectModal(title, desc, tags) {
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalDesc').textContent = desc;
+        
+        const tagsContainer = document.getElementById('modalTags');
+        tagsContainer.innerHTML = '';
+        tags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'proj-tag';
+          span.textContent = tag;
+          tagsContainer.appendChild(span);
+        });
+
+        document.getElementById('detailsModal').style.display = 'flex';
+      }
+
+      function closeProjectModal() {
+        document.getElementById('detailsModal').style.display = 'none';
+      }
+
+      window.addEventListener('click', (e) => {
+        const modal = document.getElementById('detailsModal');
+        if (e.target === modal) closeProjectModal();
+      });
+
+      // Newsletter AJAX Submission
+      document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const input = document.getElementById('newsletterEmail');
+        const btn = document.getElementById('newsletterBtn');
+        const msg = document.getElementById('newsletterFeedback');
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing...';
+
+        try {
+          const res = await fetch('subscribe.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: input.value })
+          });
+          const data = await res.json();
+          msg.style.display = 'block';
+          msg.style.color = data.success ? '#2ec4b6' : '#e63946';
+          msg.textContent = data.message || 'Subscribed successfully!';
+          if (data.success) input.value = '';
+        } catch (err) {
+          msg.style.display = 'block';
+          msg.style.color = '#e63946';
+          msg.textContent = 'Thanks for subscribing!';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        }
+      });
+    </script>
+</body>
+</html>
